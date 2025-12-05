@@ -187,13 +187,15 @@ body {
 }
 
 .team-title {
-    font-size: clamp(1rem, 4vw, 1.4rem); /* Adjust these values as needed */
+    max-width: 144px; /* Maximum width of 144 pixels */
+    white-space: nowrap; /* Prevent text from wrapping to next line */
+    overflow: hidden; /* Hide text that overflows the container */
+    text-overflow: ellipsis; /* Show "..." when text is too long */
+    font-size: 1.2rem; /* You can adjust this value as needed */
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    transition: font-size 0.2s ease;
+    display: inline-block; /* Required for max-width to work properly */
+    vertical-align: middle; /* Align with other elements in the header */
+    transition: max-width 0.3s ease; /* Optional: smooth transition if you ever change the width */
 }
 
 .team-title[data-length="long"] {
