@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive DBD - Teams</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Team-specific styling */
+        .team-section {
+            margin-top: 40px;
+        }
+        
+        .team-container {
+            background: rgba(18, 18, 18, 0.7);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(9, 0, 139, 0.3);
+            transition: var(--transition);
+        }
+        
+        .team-container:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .team-roster {
+            margin-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+        }
+        
+        .team-roster h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .role-section {
+            margin-bottom: 20px;
+        }
+        
+        .role-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .killer-title {
+            color: #ff6b6b !important;
+        }
+        
+        .survivor-title {
+            color: white !important;
+        }
+        
+        .player-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .player-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .player-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .player-list li:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: var(--accent);
+        }
+        
+        .killer-player {
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+        
+        .survivor-player {
+            color: white;
+        }
+        
+        .team-description {
+            color: var(--gray);
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .teams-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-wheelchair-move"></i>
+                <span>CompDBD</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link"><i class="fas fa-trophy"></i> Leaderboard</a>
+                <a href="teams.html" class="nav-link active"><i class="fas fa-users"></i> Teams</a>
+                <a href="callouts.html" class="nav-link"><i class="fas fa-map"></i> Map Callouts</a>
+                <div class="user-section">
+                    <a href="login.html" id="loginBtn" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <div id="userMenu" class="user-menu" style="display: none;">
+                        <img id="userAvatar" src="images/default-avatar.png" alt="User">
+                        <span id="userName">Player</span>
+                        <div class="dropdown">
+                            <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="edit-profile.html"><i class="fas fa-cog"></i> Edit Profile</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+     <!-- Main Content -->
+    <main class="container">
+        <header class="page-header">
+            <h1><i class="fa-solid fa-user-group"></i> Competitive Teams</h1>
+            <p class="subtitle">Current best and popular Competitive teams in Dead by Daylight</p>
+            <div class="text">
+                <i class="fas fa-check-circle"></i> Last updated: 5th December, 2025
+            </div>
+        </header>
+        
+        <!-- Teams Section -->
+        <section class="team-section">
+            <div class="teams-grid">
+                <!-- Team Praxis -->
+                <div class="team-container">
+                    <img class="fit-picture" src="images/praxis.webp" alt="Team Praxis">
+                    
+                    <div class="team-roster">
+                        <div class="role-section">
+                            <h3 class="role-title killer-title"><i class="fas fa-skull"></i> Killers</h3>
+                            <ul class="player-list">
+                                <li class="killer-player">Zaka [C]</li>
+                                <li class="killer-player">Boletar</li>
+                                <li class="killer-player">Laser</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="role-section">
+                            <h3 class="role-title survivor-title"><i class="fas fa-running"></i> Survivors</h3>
+                            <ul class="player-list">
+                                <li class="survivor-player">Zaka [C]</li>
+                                <li class="survivor-player">Boletar</li>
+                                <li class="survivor-player">Laser</li>
+                                <li class="survivor-player">V1</li>
+                                <li class="survivor-player">Overdose</li>
+                                <li class="survivor-player">St1v1</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="team-description">
+                        Team Praxis is one of the top Dead by Daylight competitive teams, created after Nokron and Oracle merged
+                    </div>
+                </div>
+                
+                <!-- Team Invictus -->
+                <div class="team-container">
+                    <img class="fit-picture" src="images/invictus.png" alt="Team Invictus">
+                    
+                    <div class="team-roster">
+                        <div class="role-section">
+                            <h3 class="role-title killer-title"><i class="fas fa-skull"></i> Killers</h3>
+                            <ul class="player-list">
+                                <li class="killer-player">Pedro [C]</li>
+                                <li class="killer-player">KnightLight</li>
+                                <li class="killer-player">Dan [C]</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="role-section">
+                            <h3 class="role-title survivor-title"><i class="fas fa-running"></i> Survivors</h3>
+                            <ul class="player-list">
+                                <li class="survivor-player">Pedro [C]</li>
+                                <li class="survivor-player">Rocket</li>
+                                <li class="survivor-player">KnightLight</li>
+                                <li class="survivor-player">Spitzz</li>
+                                <li class="survivor-player">Dan [C]</li>
+                                <li class="survivor-player">Kekso</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="team-description">
+                        Team Invictus is one of the top Dead by Daylight competitive teams. It consists of most of players from Team Eternal, after they disbanded
+                    </div>
+                </div>
+                
+                <!-- Team Elysium -->
+                <div class="team-container">
+                    <img class="fit-picture" src="images/elysium.png" alt="Team Elysium">
+                    
+                    <div class="team-roster">
+                        <div class="role-section">
+                            <h3 class="role-title killer-title"><i class="fas fa-skull"></i> Killers</h3>
+                            <ul class="player-list">
+                                <li class="killer-player">Xeno [C]</li>
+                                <li class="killer-player">Obii [C]</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="role-section">
+                            <h3 class="role-title survivor-title"><i class="fas fa-running"></i> Survivors</h3>
+                            <ul class="player-list">
+                                <li class="survivor-player">Xeno [C]</li>
+                                <li class="survivor-player">1lmarco</li>
+                                <li class="survivor-player">PedroHz</li>
+                                <li class="survivor-player">Silhey</li>
+                                <li class="survivor-player">Zynox</li>
+                                <li class="survivor-player">Ivn</li>
+                                <li class="survivor-player">Marcos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="team-description">
+                        Team Elysium is one of the top Dead by Daylight competitive teams, often making its way up to the grand finals and have recently won DBDL Season X Tournament
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CompDBD</h3>
+                <p>The official hub for competitive Dead by Daylight players.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Leaderboard</a>
+                <a href="teams.html">Teams</a>
+                <a href="callouts.html">Map Callouts</a>
+                <a href="login.html">Login</a>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CompetitiveDBD. Dead by Daylight is a registered trademark of Behaviour Interactive.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

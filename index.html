@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive DBD - Leaderboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-wheelchair-move"></i>
+                <span>CompDBD</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active"><i class="fas fa-trophy"></i> Leaderboard</a>
+                <a href="teams.html" class="nav-link"><i class="fas fa-users"></i> Teams</a>
+                <a href="callouts.html" class="nav-link"><i class="fas fa-map"></i> Map Callouts</a>
+                <div class="user-section">
+                    <a href="login.html" id="loginBtn" class="btn btn-outline"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <div id="userMenu" class="user-menu" style="display: none;">
+                        <img id="userAvatar" src="images/default-avatar.png" alt="User">
+                        <span id="userName">Player</span>
+                        <div class="dropdown">
+                            <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="edit-profile.html"><i class="fas fa-cog"></i> Edit Profile</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <header class="page-header">
+            <h1><i class="fas fa-crown"></i> Competitive Leaderboard</h1>
+            <p class="subtitle">Live rankings from DBD League 1v1 - Updates every 5 minutes</p>
+            <div class="last-updated">
+                <span id="lastUpdate">Loading...</span>
+                <button id="refreshBtn" class="btn btn-small"><i class="fas fa-sync-alt"></i> Refresh</button>
+            </div>
+        </header>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-container">
+            <div class="table-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchPlayers" placeholder="Search players...">
+                </div>
+                <div class="filter-options">
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>MMR</th>
+                            <th>W-L</th>
+                            <th>Winrate</th>
+                            <th>Total</th>
+                            <th>Max MMR</th>
+                            <th>Streak</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Data will be loaded here -->
+                        <tr class="loading-row">
+                            <td colspan="8">
+                                <div class="loading-spinner">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <span>Loading leaderboard data...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-footer">
+                <div class="pagination">
+                    <button id="prevPage" class="btn btn-outline" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage" class="btn btn-outline" disabled>Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="api-info">
+                    <small>Data sourced from <a href="https://www.neatqueue.com/lb/dbdleague1v1" target="_blank">NeatQueue API</a></small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Players Highlight -->
+        <section class="highlight-section">
+            <h2><i class="fas fa-star"></i> Top 3 Players</h2>
+            <div class="highlight-cards" id="topPlayers">
+                <!-- Top players will be inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CompDBD</h3>
+                <p>The official hub for competitive Dead by Daylight players.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Leaderboard</a>
+                <a href="teams.html">Teams</a>
+                <a href="callouts.html">Map Callouts</a>
+                <a href="login.html">Login</a>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 CompDBD. Dead by Daylight is a registered trademark of Behaviour Interactive.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
