@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Check login status
-    checkLoginStatus();
-    
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.nav-container') && navMenu.classList.contains('active')) {

@@ -5,6 +5,7 @@ Welcome to the official repository for Comp By Daylight, a project dedicated to 
 ## Features
 
 - **DBDLeague 1v1 Ladder Leaderboard:** Browse current players and their places, changing MMR, streaks and more.
+- *DBDLeague 1v1 Ladder Recent Matches:* Shows most recent matches with their outcome, pre-match MMR and MMR changes
 - **Competitive Team Info:** View information about most popular, famous and best teams in the world.
 - **Map Callouts:** SOON
 - **Builds:** SOON
