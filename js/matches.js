@@ -1,5 +1,5 @@
 // Recent Matches Functionality
-const MATCHES_API_URL = 'https://api.neatqueue.com/api/v1/history/459532023690821643?page=1&page_size=10&limit=10&order=desc';
+const MATCHES_API_URL = 'https://api.neatqueue.com/api/v1/history/459532023690821643?page=1&page_size=20&limit=10&order=desc';
 
 // Cache for match data
 let latestMatchData = null;
@@ -153,7 +153,7 @@ function formatLocalTime(apiTimeString) {
     }
 }
 
-// Get player rank from leaderboard data
+// Get player rank AND color style from leaderboard cache
 function getPlayerRank(playerId) {
     try {
         const cached = localStorage.getItem('leaderboard_cache');
@@ -164,14 +164,31 @@ function getPlayerRank(playerId) {
             // Find player in leaderboard
             const player = players.find(p => p.id === playerId);
             if (player && player.data && player.data.current_rank) {
-                return player.data.current_rank;
+                return {
+                    rank: player.data.current_rank,
+                    rankClass: getRankClass(player.data.current_rank)
+                };
             }
         }
     } catch (error) {
         console.error('Error getting player rank:', error);
     }
     
-    return 'N/A';
+    // Default if player not found
+    return {
+        rank: 'N/A',
+        rankClass: 'rank-other'
+    };
+}
+
+// Determine CSS class based on rank
+function getRankClass(rank) {
+    // Use the exact same class names as your leaderboard table
+    if (rank === 1) return 'rank-badge rank-1';  // Match your leaderboard's class
+    if (rank === 2) return 'rank-badge rank-2';
+    if (rank === 3) return 'rank-badge rank-3';
+    if (rank <= 10) return 'rank-badge rank-top10';
+    return 'rank-badge rank-other';
 }
 
 // Display match data in the UI
@@ -258,8 +275,11 @@ function getDiscordAvatarUrl(playerId, avatarHash = null) {
 function createPlayerMatchHTML(player, isWinner) {
     const mmr = player.mmr ? Math.round(player.mmr) : 'N/A';
     const mmrChange = player.mmr_change || 0;
-    const rank = getPlayerRank(player.id);
     
+    const rankInfo = getPlayerRank(player.id);
+    const rankDisplay = rankInfo.rank;
+    const rankClass = rankInfo.rankClass;
+
     // Try to get player data from leaderboard
     const leaderboardPlayer = getPlayerFromLeaderboard(player.id);
     
@@ -285,20 +305,18 @@ function createPlayerMatchHTML(player, isWinner) {
                 <img src="${avatarUrl}" 
                      alt="${safePlayerName}" 
                      class="player-match-avatar"
-                     onerror="this.src='images/default-avatar.png'"
-                     title="${playerName} (Rank #${rank})">
+                     onerror="this.src='images/default-avatar.png'">
                 <div class="player-match-details">
                     <h4>${playerName}</h4>
-                    <p>
-                        <span class="player-rank">Rank #${rank}</span>
-                    </p>
                 </div>
             </div>
             
+            <div class="player-rank-badge ${rankClass}">#${rankDisplay}</div>
+
             <div class="player-match-stats">
                 <div class="stat-box">
                     <div class="stat-value">${mmr}</div>
-                    <div class="stat-label">Pre-Match MMR</div>
+                    <div class="stat-label">Pre-Match</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-value ${mmrChange >= 0 ? 'positive' : 'negative'}">

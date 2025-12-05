@@ -223,7 +223,9 @@ body {
     padding: 15px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: all 0.3s ease;
+    min-height: 85px;
+    overflow: hidden; /* Prevent anything from escaping */
 }
 
 .player-match-info {
@@ -231,41 +233,73 @@ body {
     align-items: center;
     gap: 15px;
     flex: 1;
+    min-width: 0;
+    position: relative; /* Needed for absolute positioning of child */
 }
 
 .player-match-avatar {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
     border-radius: 50%;
     border: 2px solid var(--accent);
     object-fit: cover;
+    flex-shrink: 0;
+    position: relative; /* Allows badge to position relative to avatar */
 }
 
+.player-match-details {
+    flex: 1;
+    min-width: 0;
+    margin-left: 10px; /* Reduce gap since badge is on avatar */
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Player name - ensure visibility */
 .player-match-details h4 {
-    margin-bottom: 5px;
+    margin: 0 0 3px 0; /* Reduce bottom margin */
+    font-size: 1.05rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .player-match-details p {
-    color: var(--gray);
-    font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
 }
 
 .player-match-stats {
     display: flex;
     align-items: center;
-    gap: 25px;
-    text-align: center;
+    gap: 20px;
+    flex-shrink: 0; /* Don't allow stats to shrink */
+    margin-left: 15px;
+    min-width: 180px; /* Ensure minimum width for stats */
+    justify-content: flex-end;
 }
 
 .stat-box {
-    min-width: 80px;
+    min-width: 85px;
+    text-align: center;
+    flex-shrink: 0; /* Don't shrink */
 }
 
 .stat-value {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    letter-spacing: 0.5px;
 }
 
 .stat-value.positive {
@@ -277,10 +311,11 @@ body {
 }
 
 .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--gray);
     text-transform: uppercase;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
 }
 
 .match-summary {
@@ -334,6 +369,91 @@ body {
 .match-error i {
     font-size: 2rem;
     margin-bottom: 15px;
+}
+
+.player-rank-badge {
+    position: absolute;
+    bottom: 135px; /* Half below the avatar */
+    right: 105px; /* Half to the right of avatar */
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+    min-width: 10px;
+    max-width: 20px;
+    text-align: center;
+    color: white;
+    border: 2px solid var(--secondary);
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Rank-specific colors - matching leaderboard */
+.player-rank-badge.rank-1 {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #000;
+    border-color: #ffd700;
+}
+
+.player-rank-badge.rank-2 {
+    background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+    color: #000;
+    border-color: #c0c0c0;
+}
+
+.player-rank-badge.rank-3 {
+    background: linear-gradient(135deg, #cd7f32, #e09c5d);
+    color: #000;
+    border-color: #cd7f32;
+}
+
+.player-rank-badge.rank-top10 {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    border-color: #9b59b6;
+}
+
+.player-rank-badge.rank-other {
+    background: rgba(255, 255, 255, 0.15);
+    color: #000000;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Optional: Add subtle shine effect for top ranks */
+.player-rank-badge.rank-1::after,
+.player-rank-badge.rank-2::after,
+.player-rank-badge.rank-3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+    border-radius: 12px 12px 0 0;
+}
+
+/* Remove old player-rank styles if they exist */
+.player-rank, .player-mmr {
+    display: none; /* Hide old elements */
+}
+
+.player-rank {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 3px 10px;
+    border-radius: 12px;
+    display: inline-block;
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.player-mmr {
+    color: var(--gray);
+    font-size: 0.8rem;
+    font-style: italic;
+    flex-shrink: 0;
 }
 
 /* Responsive adjustments */
