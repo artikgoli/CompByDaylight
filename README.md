@@ -12,4 +12,4 @@ Welcome to the official repository for Comp By Daylight, a project dedicated to 
 
 ## To use the website:
 
-Browse the available categories on the [website]([https://artikgoli.github.io/CompByDaylight/).
+Browse the available categories on the [website]([https://artikgoli.github.io/CompByDaylight)
