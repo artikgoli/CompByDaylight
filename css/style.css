@@ -187,8 +187,17 @@ body {
 }
 
 .team-title {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 1.4rem); /* Adjust these values as needed */
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    transition: font-size 0.2s ease;
+}
+
+.team-title[data-length="long"] {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
 }
 
 .team-result {
@@ -373,7 +382,7 @@ body {
 
 .player-rank-badge {
     position: absolute;
-    bottom: 135px; /* Half below the avatar */
+    bottom: 137px; /* Half below the avatar */
     right: 105px; /* Half to the right of avatar */
     font-size: 0.75rem;
     font-weight: 700;
