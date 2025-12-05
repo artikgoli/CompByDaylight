@@ -382,7 +382,7 @@ body {
 
 .player-rank-badge {
     position: absolute;
-    bottom: 137px; /* Half below the avatar */
+    bottom: 135px; /* Half below the avatar */
     right: 105px; /* Half to the right of avatar */
     font-size: 0.75rem;
     font-weight: 700;
