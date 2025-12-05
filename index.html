@@ -43,6 +43,35 @@
             </div>
         </header>
 
+        <!-- Recent Matches Section -->
+        <section class="matches-section">
+            <header class="section-header">
+                <h2><i class="fas fa-history"></i> Recent Match</h2>
+                    <p class="subtitle">Latest completed match from the competitive queue</p>
+                    <div class="last-updated">
+                        <span id="lastMatchUpdate">Loading...</span>
+                        <button id="refreshMatchBtn" class="btn btn-small"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+            </header>
+    
+            <div class="match-container" id="matchContainer">
+             <!-- Match content will be loaded here -->
+             <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading recent match data...</span>
+                 </div>
+              </div>
+        </section>
+
+        <!-- Top Players Highlight -->
+        <section class="highlight-section">
+            <h2><i class="fas fa-star"></i> Top 3 Players</h2>
+            <div class="highlight-cards" id="topPlayers">
+                <!-- Top players will be inserted here -->
+            </div>
+        </section>
+    </main>
+
         <!-- Leaderboard Table -->
         <div class="leaderboard-container">
             <div class="table-controls">
@@ -96,35 +125,6 @@
             </div>
         </div>
 
-<!-- Recent Matches Section -->
-        <section class="matches-section">
-            <header class="section-header">
-                <h2><i class="fas fa-history"></i> Recent Match</h2>
-                    <p class="subtitle">Latest completed match from the competitive queue</p>
-                    <div class="last-updated">
-                        <span id="lastMatchUpdate">Loading...</span>
-                        <button id="refreshMatchBtn" class="btn btn-small"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    </div>
-            </header>
-    
-            <div class="match-container" id="matchContainer">
-             <!-- Match content will be loaded here -->
-             <div class="loading-spinner">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <span>Loading recent match data...</span>
-                 </div>
-              </div>
-        </section>
-
-        <!-- Top Players Highlight -->
-        <section class="highlight-section">
-            <h2><i class="fas fa-star"></i> Top 3 Players</h2>
-            <div class="highlight-cards" id="topPlayers">
-                <!-- Top players will be inserted here -->
-            </div>
-        </section>
-    </main>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -137,20 +137,10 @@
                 <a href="index.html">Leaderboard</a>
                 <a href="teams.html">Teams</a>
                 <a href="callouts.html">Map Callouts</a>
-                <a href="login.html">Login</a>
-            </div>
-            <div class="footer-section">
-                <h3>Community</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                    <a href="#"><i class="fab fa-twitch"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 CompDBD. Dead by Daylight is a registered trademark of Behaviour Interactive.</p>
+            <p>&copy; 2025 Comp By Daylight. Dead by Daylight is a registered trademark of Behaviour Interactive.</p>
         </div>
     </footer>
 
